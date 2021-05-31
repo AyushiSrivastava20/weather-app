@@ -1,0 +1,60 @@
+@import "~src/styles/variable";
+.dashboard-container {
+  @include flex($flex-direction: column);
+  margin: 20px;
+}
+
+.top-dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+}
+
+.bottom-dashboard {
+  margin-top: 20px;
+  @include flex($flex-direction: column);
+  .selected-header {
+    @include flex($flex-direction: row);
+  }
+  .selected-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+  }
+  @media only screen and (max-width: 400px) {
+    .selected-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    .selected-list {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .top-dashboard {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+@media only screen and (min-width: 850px) {
+  .top-dashboard {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .top-dashboard {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+.center {
+  padding-top: 100px;
+  margin: 0 auto;
+}

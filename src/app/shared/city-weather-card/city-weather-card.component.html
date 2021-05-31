@@ -1,0 +1,22 @@
+<div class="city-weather-card-container" [ngClass]="{'selected': selectedId === weatherData?.id}">
+  <div class="city-header">
+    <app-weather-icon
+      [iconName]="weatherData?.weather[0]?.icon"
+      [descriptionWeather]="weatherData?.weather[0]?.description"></app-weather-icon>
+    <div class="right-city-header">
+      <span>{{weatherData?.dt * 1000 | date : 'EE, MMM d'}}</span>
+      <span>{{weatherData?.dt * 1000 | date : 'shortTime'}}</span>
+      <div class="condition">{{weatherData?.weather[0]?.description | titlecase}}</div>
+    </div>
+  </div>
+
+  <div class="temperature-container">
+    {{weatherData?.main?.temp | temperature : 'metric'}}
+  </div>
+  <div class="city-name-container">
+    <h2>{{weatherData?.name}}</h2>
+  </div>
+  <div *ngIf="weatherData?.wind.speed" class="wind-container">
+    <mat-icon>air</mat-icon><span class="wind-speed">{{weatherData?.wind.speed | windSpeed: 'metric'}}</span>
+  </div>
+</div>

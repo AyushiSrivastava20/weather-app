@@ -1,0 +1,10 @@
+<div class="hourly-weather-card-container">
+  <app-weather-icon
+    [iconName]="forecastHourly?.weather[0]?.icon"
+    [imageSize]="'60px'"
+    [descriptionWeather]="forecastHourly?.weather[0]?.description"></app-weather-icon>
+  <div class="temp-header">{{forecastHourly?.temp | temperature : 'metric'}}</div>
+  <div class="description">{{forecastHourly?.weather[0]?.description | titlecase}}</div>
+  <div class="time">{{forecastHourly?.dt * 1000 | date : 'EEE'}}</div>
+  <div class="time">{{forecastHourly?.dt * 1000 | date : 'shortTime'}}</div>
+</div>

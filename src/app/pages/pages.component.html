@@ -1,0 +1,11 @@
+<mat-toolbar color="primary" class="header">
+  <div class="left-header">
+    <img src="assets/weather.svg">
+    <span>{{title}}</span>
+  </div>
+  <div class="right-header">
+    <span>{{todayDate | date: 'fullDate'}}</span>
+    <span>{{todayDate | date: 'shortTime'}}</span>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>

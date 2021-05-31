@@ -1,0 +1,25 @@
+@import "~src/styles/variable";
+
+.hourly-weather-card-container {
+  height: 250px;
+  border-radius: 10px;
+  box-shadow: 2px 9px 9px rgba(0,0,0,0.2);
+  padding: 10px;
+  @include flex($flex-direction: column, $align-items: center);
+
+  .temp-header {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .time {
+    font-size: 16px;
+  }
+}
