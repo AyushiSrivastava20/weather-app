@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   backend_url: 'http://api.openweathermap.org/',
   img_url : 'http://openweathermap.org/img/wn/',
+  // currently the key is hardcoded. Once the app is deployed this can be moved to a process env variable
   api_key: '1fab78b324168d42f964bc13c14b7fda'
 };
 
