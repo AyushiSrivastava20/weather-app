@@ -9,7 +9,9 @@ import {loadWeathers, loadWeathersFailure, loadWeathersSuccess,
 
 const weatherReducer = createReducer(
   initialWeatherState,
+  // @ts-ignore
   on(loadWeathers, (state: WeatherState) => ({ ...state, ...loadingState })),
+  // @ts-ignore
   on(loadWeathersSuccess, (state: WeatherState, {data}) => {
     return {
       ...state,
@@ -17,6 +19,7 @@ const weatherReducer = createReducer(
       ...successLoadedState
     };
   }),
+  // @ts-ignore
   on(loadWeathersFailure, (state: WeatherState, {error}) => {
     return {
       ...state,
@@ -24,6 +27,7 @@ const weatherReducer = createReducer(
       error
     };
   }),
+  // @ts-ignore
   on(loadWeathersForecastData, (state: WeatherState, {city}) => {
     return {
       ...state,
@@ -32,6 +36,7 @@ const weatherReducer = createReducer(
       error: null
     };
   }),
+  // @ts-ignore
   on(loadWeathersForecastDataSuccess, (state: WeatherState, {forecastData}) => {
     return {
       ...state,
@@ -40,6 +45,7 @@ const weatherReducer = createReducer(
       forecastError: null
     };
   }),
+  // @ts-ignore
   on(loadWeathersForecastDataFailure, (state: WeatherState, {forecastError}) => {
     return {
       ...state,

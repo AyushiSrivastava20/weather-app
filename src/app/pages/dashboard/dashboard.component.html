@@ -1,25 +1,32 @@
 <div class="dashboard-container">
-  <div class="top-dashboard" *ngIf="!(loadingWeatherData$ | async) else loader;">
-    <div *ngFor="let weatherData of weatherData$ | async">
+  <div *ngIf="!(loadingWeatherData$ | async) else loader;">
+    <div class="top-dashboard" *ngIf="weatherData$ | async as weatherDataArr else empty;">
+      <div *ngFor="let weatherData of weatherDataArr">
       <app-city-weather-card [weatherData]="weatherData"
                              [selectedId]="(selectedCity$ | async)?.id"
                              (click)="selectCity( weatherData?.name, weatherData?.id, weatherData?.coord?.lat, weatherData?.coord?.lon)">
       </app-city-weather-card>
     </div>
+    </div>
   </div>
-  <div class="bottom-dashboard" *ngIf="!(forecastLoadingWeatherData$ | async) else loader;">
-    <div class="selected-header" *ngIf="selectedCity$ | async as city">
-      <h2>{{city.name}}</h2>
-    </div>
-    <div class="selected-list">
-      <div *ngFor="let hourlyWeather of forecastWeatherData$ | async">
-        <app-hourly-weather-card [forecastHourly]="hourlyWeather"></app-hourly-weather-card>
+  <div class="bottom-dashboard" *ngIf="!(loadingForecastWeatherData$ | async) else loader;">
+    <ng-container *ngIf="forecastWeatherData$ | async as forecastWeatherArr else empty;">
+      <div class="selected-header" *ngIf="selectedCity$ | async as city">
+        <h2>{{city.name}}</h2>
       </div>
-    </div>
+      <div class="selected-list">
+        <div *ngFor="let hourlyWeather of forecastWeatherArr">
+          <app-hourly-weather-card [forecastHourly]="hourlyWeather"></app-hourly-weather-card>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>
 <ng-template #loader>
   <div class="center">
     <mat-spinner></mat-spinner>
   </div>
+</ng-template>
+<ng-template #empty>
+    <app-empty-state></app-empty-state>
 </ng-template>

@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   weatherData$: Observable<WeatherFields[]>;
   loadingWeatherData$: Observable<boolean>;
   forecastWeatherData$: Observable<ForecastWeatherResponse[]>;
-  forecastLoadingWeatherData$: Observable<boolean>;
+  loadingForecastWeatherData$: Observable<boolean>;
   weatherPollSubscription: Subscription;
   STATUS_INTERVAL_CHECK_TIME = 100000;
   selectedCity$ : Observable<SelectedCity>;
@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.selectedCity$ = this._appStore.select(getSelectedCity);
     this.loadingWeatherData$ = this._appStore.select(getWeatherDataLoading);
     this.forecastWeatherData$ = this._appStore.select(getForecastData);
-    this.forecastLoadingWeatherData$ = this._appStore.select(getForecastDataLoading);
+    this.loadingForecastWeatherData$ = this._appStore.select(getForecastDataLoading);
   }
 
   private startPollingSubscription(): void {

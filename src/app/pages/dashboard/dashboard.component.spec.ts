@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule} from '@angular/common/http';
 import { DashboardComponent } from './dashboard.component';
+import {WeatherService} from "@core/services/weather.service";
+import {StoreModule} from "@ngrx/store";
+import {reducers} from "@app/reducer";
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -8,7 +11,9 @@ describe('DashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
+      imports: [HttpClientModule, StoreModule.forRoot(reducers)],
+      declarations: [ DashboardComponent ],
+      providers: [WeatherService]
     })
     .compileComponents();
   });

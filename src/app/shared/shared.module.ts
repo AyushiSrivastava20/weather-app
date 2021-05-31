@@ -6,20 +6,23 @@ import {MatIconModule} from "@angular/material/icon";
 import {CoreModule} from "@core/core.module";
 import { HourlyWeatherCardComponent } from './hourly-weather-card/hourly-weather-card.component';
 import { WeatherIconComponent } from './weather-icon/weather-icon.component';
+import { EmptyStateComponent } from './empty-state/empty-state.component';
 
 
 @NgModule({
     declarations: [
         CityWeatherCardComponent,
         HourlyWeatherCardComponent,
-        WeatherIconComponent
+        WeatherIconComponent,
+        EmptyStateComponent
     ],
-    exports: [
-        CityWeatherCardComponent,
-        CommonModule,
-        MatTooltipModule,
-        HourlyWeatherCardComponent
-    ],
+  exports: [
+    CityWeatherCardComponent,
+    CommonModule,
+    MatTooltipModule,
+    HourlyWeatherCardComponent,
+    EmptyStateComponent
+  ],
   imports: [
     CommonModule,
     MatTooltipModule,

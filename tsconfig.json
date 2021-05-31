@@ -10,6 +10,7 @@
       "@pages/*": ["src/app/pages/*"],
       "@shared/*": ["src/app/shared/*"]
     },
+    "resolveJsonModule": true,
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strictPropertyInitialization": false,

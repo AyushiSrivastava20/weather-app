@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CityWeatherCardComponent } from './city-weather-card.component';
+import {CustomDatePipe} from "@core/pipes/custom-date.pipe";
+import {TemperaturePipe} from "@core/pipes/temperature.pipe";
 
 describe('CityWeatherCardComponent', () => {
   let component: CityWeatherCardComponent;
@@ -8,7 +10,7 @@ describe('CityWeatherCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CityWeatherCardComponent ]
+      declarations: [ CityWeatherCardComponent, CustomDatePipe, TemperaturePipe]
     })
     .compileComponents();
   });

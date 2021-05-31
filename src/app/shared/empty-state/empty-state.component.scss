@@ -1,0 +1,17 @@
+.empty-box-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-image {
+  width: 250px;
+  margin: 0 auto;
+  left: 50%;
+}
+
+.empty-title {
+  font-size: larger;
+  font-weight: bold;
+}

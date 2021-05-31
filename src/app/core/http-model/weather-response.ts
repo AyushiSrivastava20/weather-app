@@ -53,6 +53,7 @@ export interface ForecastWeatherCompleteResponse{
 
 export interface ForecastWeatherResponse {
   dt: number;
+  timezone: number;
   temp: number;
   feels_like: number;
   pressure: number;

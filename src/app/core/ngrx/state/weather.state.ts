@@ -1,6 +1,7 @@
 import {ForecastWeatherResponse, WeatherFields} from "@core/http-model/weather-response";
 import {ApplicationState} from "@app/reducer";
 import {createSelector} from "@ngrx/store";
+import * as _ from 'lodash';
 
 export class SelectedCity {
   id: number;
@@ -9,17 +10,17 @@ export class SelectedCity {
   name: string
 }
 export class WeatherState {
-  data: WeatherFields[];
+  data: WeatherFields[] | null;
   loading: boolean;
   error: any;
   selectedCity : SelectedCity;
-  forecastData: ForecastWeatherResponse[];
+  forecastData: ForecastWeatherResponse[] | null;
   forecastLoading: boolean;
   forecastError: any;
 }
 
 export const initialWeatherState: WeatherState = {
-  data: [],
+  data: null,
   loading: false,
   error: null,
   selectedCity : {
@@ -28,16 +29,15 @@ export const initialWeatherState: WeatherState = {
     lon: 0,
     name: ''
   },
-  forecastData: [],
+  forecastData: null,
   forecastLoading: false,
   forecastError: null
 };
 
 export const getWeatherDataStore = (state: ApplicationState) => state.weather;
 
-export const getWeatherData = createSelector(getWeatherDataStore, (state) => state.data);
-export const getWeatherDataLoading = createSelector(getWeatherDataStore, (state) => state.data.loading);
-
-export const getSelectedCity = createSelector(getWeatherDataStore, (state) => state.selectedCity);
-export const getForecastData = createSelector(getWeatherDataStore, (state) => state.forecastData);
-export const getForecastDataLoading = createSelector(getWeatherDataStore, (state) => state.forecastLoading);
+export const getWeatherData = createSelector(getWeatherDataStore, (state) => _.get(state, 'data'));
+export const getWeatherDataLoading = createSelector(getWeatherDataStore, (state) => _.get(state, 'data.loading'));
+export const getSelectedCity = createSelector(getWeatherDataStore, (state) =>  _.get(state, 'selectedCity'));
+export const getForecastData = createSelector(getWeatherDataStore, (state) => _.get(state, 'forecastData'));
+export const getForecastDataLoading = createSelector(getWeatherDataStore, (state) =>_.get(state, 'forecastLoading'));

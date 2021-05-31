@@ -9,6 +9,7 @@ import {
 } from "@core/http-model/weather-response";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
+import * as _ from 'lodash';
 
 export const CityList = [2759794, 2968815, 3054638, 6356055, 3169070]
 
@@ -28,7 +29,7 @@ export class WeatherService {
    */
   getWeatherDataForCities(): Observable<WeatherFields[]> {
     const url = environment.backend_url+ `${this.urlWeatherData}?id=${CityList.toString()}&units=metric&appId=${environment.api_key}`;
-    return this.httpClient.get<WeatherResponse>(url).pipe(map(resp => resp.list));
+    return this.httpClient.get<WeatherResponse>(url).pipe(map(resp => _.get(resp, 'list')));
   }
 
   /**
@@ -39,6 +40,8 @@ export class WeatherService {
   getForeCastData(lat: number, lon: number): Observable<ForecastWeatherResponse[]> {
     const url = environment.backend_url+ `${this.forecastWeatherUrl}?lat=${lat}&lon=${lon}&exclude=current,minutely,daily&units=metric&appId=${environment.api_key}`;
     return this.httpClient.get<ForecastWeatherCompleteResponse>(url).pipe(
-      map(resp => resp.hourly));
+      map(resp => resp.hourly.map(e => {
+        return { ...e , timezone: _.get(resp, 'timezone_offset')}
+      })));
   }
 }
